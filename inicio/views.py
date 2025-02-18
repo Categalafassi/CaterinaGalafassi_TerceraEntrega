@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from datetime import datetime
 from inicio.models import Libro
-from inicio.forms import CrearLibro
+from inicio.forms import CrearLibro, BuscarLibro
 
 
 def inicio(request):
@@ -35,4 +35,8 @@ def crear_libro(request):
 
 def listado_de_libros(request):
     libros = Libro.objects.all()
-    return render(request, 'inicio/listado_de_libros.html', {'libros': libros})
+    formulario=BuscarLibro(request.GET)
+    if formulario.is_valid():
+        titulo_a_buscar=formulario.cleaned_data.get("titulo")
+        libros=Libro.objects.filter(titulo__icontains=titulo_a_buscar)
+    return render(request, 'inicio/listado_de_libros.html', {'libros': libros, 'formulario': formulario})

@@ -13,7 +13,12 @@
     </nav>
   
     <h1> Listado de libros </h1>
-    
+
+    <form action="">
+        {{formulario}}
+        <input type="submit" value="Buscar">
+    </form>
+
     {% if libros %}
     <ul>
         {% for libro in libros %}
