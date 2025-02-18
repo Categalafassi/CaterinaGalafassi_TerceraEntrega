@@ -1,1 +1,1 @@
-# Proyecto de Django. 
+# Proyecto de Django - Tercera entrega
