@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>inicio</title>
+    <title>listado de libros</title>
 </head>
 <body>
     <nav>
@@ -11,8 +11,19 @@
         <a href={% url "crear_libro" %}>Crear libro</a>
         <a href={% url "listado_de_libros" %}>Listado de libros</a>
     </nav>
+  
+    <h1> Listado de libros </h1>
     
-    <h1>Inicio</h1>
-    
+    {% if libros %}
+    <ul>
+        {% for libro in libros %}
+       <li>
+        {{libro}}
+       </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>no hay libros cargados.</p>
+    {% endif %}
 </body>
 </html>
